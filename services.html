@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Event Programme — Tooth Talk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens (extracted from Figma — node 512:43) ───────────────────
+       Figma file:     98P0uIWUktVW2fl3PM11Iw  (Services Page canvas)
+       Primary brand:  #843E71  (r:0.518 g:0.243 b:0.443)
+       Card shadow:    rgba(0,0,0,0.08)
+       Border radius:  6px
+       Font:           Inter 400/500/700
+       H1:             56px 700  (letter-spacing: -1px)
+       Section title:  28px 500
+       Label:          14px 500  (tracking: 1.5px, uppercase)
+       Body:           18px 400 / 16px 400 (card body)
+       Layout:         NAV → HERO → OVERVIEW (2-col) → PROGRAMME (3×2) → SPEAKERS (4-col) → CTA → FOOTER
+    ─────────────────────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand:        #843E71;
+      --brand-light:  #F4EBF1;
+      --brand-dark:   #5C2B4F;
+      --dark-1:       #1A1A2E;
+      --dark-2:       #333344;
+      --dark-3:       #555566;
+      --light-1:      #FFFFFF;
+      --light-2:      #F8F4F7;
+      --light-3:      #EDE3EB;
+      --grey:         #BFBFBF;
+      --shadow:       0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 16px 40px rgba(132, 62, 113, 0.18);
+      --radius:       6px;
+      --font:         'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--dark-2);
+      background-color: var(--light-2);
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────────────────────── */
+    nav {
+      background-color: var(--light-1);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background-color: var(--brand);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .nav-logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--dark-3);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brand);
+    }
+
+    .nav-cta {
+      background-color: var(--brand);
+      color: white !important;
+      padding: 10px 24px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      transition: background-color 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background-color: var(--brand-dark) !important;
+      color: white !important;
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────────────────── */
+    .hero {
+      background-color: var(--brand);
+      color: white;
+      padding: 96px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(255,255,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(255,255,255,0.06) 0%, transparent 50%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ─── SECTION WRAPPER ───────────────────────────────────────────────────── */
+    section {
+      padding: 80px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--brand);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--dark-1);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--dark-3);
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    /* ─── OVERVIEW (2-col — matches Figma MISSION section) ─────────────────── */
+    .overview {
+      background-color: var(--light-1);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .overview-text p {
+      font-size: 18px;
+      color: var(--dark-3);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .overview-stats {
+      display: flex;
+      gap: 32px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background-color: var(--brand-light);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark-3);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .overview-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 320px;
+      position: relative;
+    }
+
+    .overview-visual-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid;
+      opacity: 0.18;
+    }
+
+    .overview-visual-ring:nth-child(1) { width: 280px; height: 280px; border-color: var(--brand); }
+    .overview-visual-ring:nth-child(2) { width: 200px; height: 200px; border-color: var(--brand); opacity: 0.28; }
+    .overview-visual-ring:nth-child(3) { width: 120px; height: 120px; border-color: var(--brand); opacity: 0.42; }
+
+    .overview-visual-icon {
+      width: 72px;
+      height: 72px;
+      background-color: var(--brand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 12px 32px rgba(132, 62, 113, 0.4);
+    }
+
+    .overview-visual-icon svg {
+      width: 36px;
+      height: 36px;
+      fill: white;
+    }
+
+    /* ─── PROGRAMMES (3×2 grid — matches Figma VALUES section) ─────────────── */
+    .programmes {
+      background-color: var(--light-2);
+    }
+
+    .programmes-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .programmes-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .programmes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .value-card {
+      background-color: var(--light-1);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .value-icon {
+      width: 56px;
+      height: 56px;
+      background-color: var(--brand-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .value-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--brand);
+    }
+
+    .value-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--dark-1);
+      margin-bottom: 12px;
+    }
+
+    .value-body {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--dark-3);
+      line-height: 1.6;
+    }
+
+    /* ─── FEATURED SESSIONS (4-col — matches Figma TEAM section) ───────────── */
+    .featured {
+      background-color: var(--light-1);
+    }
+
+    .featured-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .featured-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .featured-card {
+      background-color: var(--light-2);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .featured-avatar {
+      width: 72px;
+      height: 72px;
+      background-color: var(--brand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+
+    .featured-name {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--dark-1);
+      margin-bottom: 4px;
+    }
+
+    .featured-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--brand);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .featured-bio {
+      font-size: 15px;
+      color: var(--dark-3);
+      line-height: 1.55;
+    }
+
+    /* ─── CTA ───────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background-color: var(--brand);
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .cta-section h2 {
+      font-size: 40px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: white;
+      color: var(--brand);
+      font-family: var(--font);
+      font-size: 18px;
+      font-weight: 500;
+      padding: 14px 40px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────────────────── */
+    footer {
+      background-color: var(--dark-1);
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 14px;
+    }
+
+    footer span {
+      color: var(--brand);
+      font-weight: 500;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 36px; }
+      .overview-grid { grid-template-columns: 1fr; }
+      .overview-visual { display: none; }
+      .overview-stats { flex-direction: column; gap: 16px; }
+      .programmes-grid { grid-template-columns: 1fr 1fr; }
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .programmes-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+      .cta-section h2 { font-size: 28px; }
+    }
+
+    /* ─── ANIMATION ─────────────────────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.53 1.19 4.78 3.06 6.22.29.22.47.56.47.93V17h7v-.84c0-.37.18-.71.47-.93C17.81 13.78 19 11.53 19 9c0-3.87-3.13-7-7-7zm-1 13v-1h2v1h-2zm1-3c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>
+        </div>
+        <span class="nav-logo-text">Tooth Talk</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="#" class="active">Schedule</a></li>
+        <li><a href="#">Speakers</a></li>
+        <li><a href="#" class="nav-cta">Register Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" data-testid="hero">
+    <div class="hero-badge">Tooth Talk 2026</div>
+    <h1>Our Event Programme - Cloud Saucer</h1>
+    <p>Six curated formats designed to connect, educate, and inspire dental professionals at every stage of their career.</p>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="overview" data-testid="overview-section">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="overview-text fade-in">
+          <div class="section-label">What We Offer</div>
+          <h2 class="section-title">Events Designed for Every Professional</h2>
+          <p>
+            From intimate networking evenings to large-scale clinical conferences, the Tooth Talk
+            programme spans six distinct formats — each built around a shared purpose: making
+            continuing education genuinely useful and genuinely enjoyable.
+          </p>
+          <div class="overview-stats">
+            <div class="stat-card">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Formats</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">12+</div>
+              <div class="stat-label">Sessions / Year</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Per Event</div>
+            </div>
+          </div>
+        </div>
+        <div class="overview-visual fade-in" aria-hidden="true">
+          <div class="overview-visual-ring"></div>
+          <div class="overview-visual-ring"></div>
+          <div class="overview-visual-ring"></div>
+          <div class="overview-visual-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME FORMATS -->
+  <section class="programmes" data-testid="services-section">
+    <div class="container">
+      <div class="programmes-header fade-in">
+        <div class="section-label">Programme Formats</div>
+        <h2 class="section-title">Six Ways to Learn and Connect</h2>
+        <p class="section-subtitle">
+          Every format is crafted to fit around your schedule and deliver genuine value — from
+          quick lunch talks to full-day intensive workshops.
+        </p>
+      </div>
+      <div class="programmes-grid">
+
+        <div class="value-card fade-in" data-testid="service-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <div class="value-title">Networking Evenings</div>
+          <p class="value-body">Relaxed, informal evenings where dentists, hygienists, and specialists share experiences over food and drink. No slides required.</p>
+        </div>
+
+        <div class="value-card fade-in" data-testid="service-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          </div>
+          <div class="value-title">Clinical Workshops</div>
+          <p class="value-body">Hands-on, small-group sessions covering emerging techniques — composite artistry, minimal-prep veneers, and digital workflow integration.</p>
+        </div>
+
+        <div class="value-card fade-in" data-testid="service-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+          </div>
+          <div class="value-title">Speaker Series</div>
+          <p class="value-body">Monthly evening talks from leading clinicians and researchers sharing the evidence behind their practice — always followed by open Q&amp;A.</p>
+        </div>
+
+        <div class="value-card fade-in" data-testid="service-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+          </div>
+          <div class="value-title">Mentorship Programme</div>
+          <p class="value-body">Structured 6-month pairings matching newly qualified dentists with experienced principals and specialists for career and clinical guidance.</p>
+        </div>
+
+        <div class="value-card fade-in" data-testid="service-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2 0V4.07c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93z"/></svg>
+          </div>
+          <div class="value-title">Online Community</div>
+          <p class="value-body">A private forum and monthly virtual clinic where members share cases, ask questions, and stay connected between in-person events.</p>
+        </div>
+
+        <div class="value-card fade-in" data-testid="service-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+          </div>
+          <div class="value-title">Annual Conference</div>
+          <p class="value-body">Our flagship full-day event with 500+ attendees, 12 keynote sessions, live demos, an exhibition area, and the Tooth Talk Community Awards.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED SESSIONS -->
+  <section class="featured" data-testid="process-section">
+    <div class="container">
+      <div class="featured-header fade-in">
+        <div class="section-label">Coming Up</div>
+        <h2 class="section-title">Featured Sessions This Season</h2>
+        <p class="section-subtitle">
+          Four sessions not to miss — register early as places are limited.
+        </p>
+      </div>
+      <div class="featured-grid">
+
+        <div class="featured-card fade-in">
+          <div class="featured-avatar">DR</div>
+          <div class="featured-name">Dr Riya Patel</div>
+          <div class="featured-role">Clinical Workshop</div>
+          <p class="featured-bio">Composite Artistry masterclass — free-hand layering techniques for anterior restorations. Limited to 20 delegates.</p>
+        </div>
+
+        <div class="featured-card fade-in">
+          <div class="featured-avatar">PS</div>
+          <div class="featured-name">Prof Sarah Okonkwo</div>
+          <div class="featured-role">Speaker Series</div>
+          <p class="featured-bio">Evidence Update: Periodontal–Systemic Links — the latest meta-analyses and what they mean for your daily practice.</p>
+        </div>
+
+        <div class="featured-card fade-in">
+          <div class="featured-avatar">JL</div>
+          <div class="featured-name">James Liu, BDS</div>
+          <div class="featured-role">Networking Evening</div>
+          <p class="featured-bio">Dental Tech Night — show-and-tell session on intra-oral scanners, CBCT, and AI-assisted treatment planning tools.</p>
+        </div>
+
+        <div class="featured-card fade-in">
+          <div class="featured-avatar">AM</div>
+          <div class="featured-name">Dr Amara Mensah</div>
+          <div class="featured-role">Annual Conference</div>
+          <p class="featured-bio">Keynote: Building a Sustainable Practice — career longevity, burnout prevention, and community as the antidote.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" data-testid="cta-section">
+    <div class="container">
+      <div class="fade-in">
+        <h2>Ready to Join the Conversation?</h2>
+        <p>Membership is free. All you need is a passion for dentistry and curiosity about what's next.</p>
+        <a href="#" class="btn-primary" data-testid="cta-button">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <span>Tooth Talk</span>. A Casual Meetup for Dental Professionals.</p>
+  </footer>
+
+  <script>
+    // Intersection Observer — scroll-triggered fade-in (same pattern as aboutus.html)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    // Scroll-based active nav highlight
+    const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.forEach((l) => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "tooth-talk-website",
+  "version": "1.0.0",
+  "description": "Tooth Talk dental professionals community website — Figma ↔ Copilot ↔ GitHub SDLC demo",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  }
+}

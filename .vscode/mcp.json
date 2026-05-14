@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "Framelink Figma MCP": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "figma-developer-mcp", "--figma-api-key=${input:figmaApiKey}", "--stdio"]
+    }
+  },
+  "inputs": [
+    {
+      "id": "figmaApiKey",
+      "type": "promptString",
+      "description": "Figma Personal Access Token",
+      "password": true
+    }
+  ]
+}
