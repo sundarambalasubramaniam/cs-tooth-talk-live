@@ -49,6 +49,12 @@ test.describe('Services page', () => {
     await expect(cta).toHaveText('Register Now');
   });
 
+  test('hero Book Appointment button is visible', async ({ page }) => {
+    const btn = page.locator('[data-testid="hero"] [data-testid="hero-cta"]');
+    await expect(btn).toBeVisible();
+    await expect(btn).toHaveText('Book Appointment');
+  });
+
   test('nav logo links to page root', async ({ page }) => {
     const logo = page.locator('.nav-logo');
     await expect(logo).toBeVisible();

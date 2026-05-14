@@ -179,8 +179,18 @@
       font-weight: 400;
       color: rgba(255, 255, 255, 0.85);
       max-width: 520px;
-      margin: 0 auto;
+      margin: 0 auto 32px;
       position: relative;
+    }
+
+    .hero .btn-primary {
+      position: relative;
+      background-color: white;
+      color: var(--brand);
+    }
+
+    .hero .btn-primary:hover {
+      background-color: var(--brand-light);
     }
 
     /* ─── SECTION WRAPPER ───────────────────────────────────────────────────── */
@@ -550,6 +560,7 @@
     <div class="hero-badge">Tooth Talk 2026</div>
     <h1>Our Event Programme - Cloud Saucer</h1>
     <p>Six curated formats designed to connect, educate, and inspire dental professionals at every stage of their career.</p>
+    <a href="#" class="btn-primary" data-testid="hero-cta">Book Appointment</a>
   </section>
 
   <!-- OVERVIEW -->
